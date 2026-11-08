@@ -27,6 +27,8 @@ Negative tests (must fail with the exact message):
 
 As B, call respond(0, "I wrote this story myself; any similarity is coincidence."). Expected: null. Read back get_case(0): respondent_statement set.
 
+Run the two negative tests below while case 0 is still open, before adjudication in step 3 — after the case is decided or closed, respond fails with "case is not open for responses" instead (status is checked before identity).
+
 Negative tests:
 - as A, respond(0, ...) → "only the respondent can respond"
 - as B, respond(0, ...) again → "respondent has already responded"
@@ -64,3 +66,4 @@ Negative tests:
 - get_case_verdict(2) = "independent", get_case_remedy(2) = "no_action"
 - get_case_verdict(3) = "unverifiable", get_case_remedy(3) = "no_action"
 - get_case_evidence(0) names the shared passages; get_case_evidence(3) says the accused work was unretrievable
+- Note: views on nonexistent ids (e.g. get_case(99)) error without a friendly message — the contract has no existence check.
